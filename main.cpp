@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <array>    // Se necesita activar C++11
+#include "ventas.h"
 
 /* Trabajo Practico N13 - MATRICES
 
@@ -38,9 +39,49 @@ Augusto SCHMID
 */
 using namespace std;
 
+
+
 int main(int argc, char** argv) {
+	//Variables
+	Ventas var_matrix;	
 	
+	//Interfaz:
+	cout<<endl<<"Presione Ctrl + Z para terminar la carga las ventas del actual vendedor"<<endl<<endl;
+	cout<<endl<<"Ingrese en las columnas Ventas de la region y en las filas vendedores:"<<endl;
+	cout<<"19 32 45 ^Z"<<endl;
+	cout<<"20 30 60 ^Z"<<endl;
+	cout<<"23 44 70 -1 ^Z ^Z"<<endl<<endl;
 	
+	//Carga de Datos:
+	unsigned i = 0;
+	unsigned t = 0;
+	
+	double aux;
+	double flag = -1;
+	
+	do {		
+		t = 0;
+		while (leer_dato(aux) && flag == -1){			
+			//cout<<"Flag:"<<aux;
+			if (aux == flag) {
+				flag = -2;
+			}
+			else {
+				var_matrix.Matrix.at(i).at(t) = aux;
+				t++;
+			}
+		}
+		cin.clear();
+		cin.ignore();
+		i++;
+	} while (flag == -1);
+	
+	cout<<endl<<"i: "<<i<<endl;
+	cout<<endl<<"t: "<<t<<endl;
+	var_matrix.i = i;
+	var_matrix.j = j;
 	
 	return 0;
 }
+
+
